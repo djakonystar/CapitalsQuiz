@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import uz.texnopos.capitalsquiz.databinding.ActivityGameBinding
 
 class GameActivity : AppCompatActivity() {
@@ -80,7 +81,7 @@ class GameActivity : AppCompatActivity() {
 
         binding.apply {
             btnOptionOne.backgroundTintList =
-                ColorStateList.valueOf(resources.getColor(R.color.white))
+                ColorStateList.valueOf(ContextCompat.getColor(this@GameActivity, R.color.white))
             btnOptionTwo.backgroundTintList =
                 ColorStateList.valueOf(resources.getColor(R.color.white))
             btnOptionThree.backgroundTintList =
