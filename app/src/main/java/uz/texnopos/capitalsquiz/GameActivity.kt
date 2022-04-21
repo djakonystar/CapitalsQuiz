@@ -15,12 +15,17 @@ class GameActivity : AppCompatActivity() {
     private var selectedOptionId = 0
     private var step = 0
     private var correctAnswersCounter = 0
+    private lateinit var name: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        intent.getStringExtra("name")?.let {
+            name = it
+        }
 
         questions = Constants.getQuestions().toMutableList()
         questions.shuffle()
@@ -65,6 +70,7 @@ class GameActivity : AppCompatActivity() {
                 } else if (btnSubmit.text == getString(R.string.finish_text)) {
                     Toast.makeText(this@GameActivity, "Game over", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@GameActivity, ResultActivity::class.java)
+                    intent.putExtra("name", name)
                     intent.putExtra("score", correctAnswersCounter)
                     startActivity(intent)
                     finish()

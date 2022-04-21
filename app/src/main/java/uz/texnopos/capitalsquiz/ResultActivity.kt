@@ -16,6 +16,10 @@ class ResultActivity : AppCompatActivity() {
         setContentView(view)
 
         val correctAnswersCount = intent.getIntExtra("score", 0)
+        intent.getStringExtra("name")?.let {
+            binding.tvName.text = it
+        }
+
         binding.tvResult.text = getString(R.string.score_text, correctAnswersCount)
     }
 }
