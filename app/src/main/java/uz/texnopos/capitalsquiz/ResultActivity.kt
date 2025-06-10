@@ -17,9 +17,13 @@ class ResultActivity : AppCompatActivity() {
 
         val correctAnswersCount = intent.getIntExtra("score", 0)
         intent.getStringExtra("name")?.let {
-            binding.tvName.text = it
+            binding.tvName.text = "Congratulations, $it!"
         }
 
         binding.tvResult.text = getString(R.string.score_text, correctAnswersCount)
+
+        binding.btnNewGame.setOnClickListener {
+            finish()
+        }
     }
 }

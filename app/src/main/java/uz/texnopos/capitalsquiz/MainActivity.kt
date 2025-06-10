@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                 if (name.isEmpty()) {
                     tilName.error = getString(R.string.name_error)
                 } else {
-                    val intent = Intent(this@MainActivity, GameActivity::class.java)
+                    val intent = Intent(this@MainActivity, TypeActivity::class.java)
                     intent.putExtra("name", name)
                     startActivity(intent)
                     finish()

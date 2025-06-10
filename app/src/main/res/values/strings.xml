@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Capitals Quiz</string>
+    <string name="app_name">Geography Quiz</string>
     <string name="welcome">Welcome</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="start">Start</string>

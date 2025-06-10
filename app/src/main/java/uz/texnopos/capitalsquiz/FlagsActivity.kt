@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import uz.texnopos.capitalsquiz.databinding.ActivityFlagsBinding
 import uz.texnopos.capitalsquiz.databinding.ActivityGameBinding
 
-class GameActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityGameBinding
+class FlagsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityFlagsBinding
     private lateinit var questions: MutableList<Question>
     private lateinit var currentQuestion: Question
     private var selectedOptionId = 0
@@ -19,7 +20,7 @@ class GameActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGameBinding.inflate(layoutInflater)
+        binding = ActivityFlagsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
@@ -27,7 +28,7 @@ class GameActivity : AppCompatActivity() {
             name = it
         }
 
-        questions = Constants.getQuestions().toMutableList()
+        questions = Constants.getFlagQuestions().toMutableList()
         questions.shuffle()
         questions = questions.subList(0, 10)
 
@@ -69,8 +70,7 @@ class GameActivity : AppCompatActivity() {
                         }
                     }
                 } else if (btnSubmit.text == getString(R.string.finish_text)) {
-                    Toast.makeText(this@GameActivity, "Game over", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@GameActivity, ResultActivity::class.java)
+                    val intent = Intent(this@FlagsActivity, ResultActivity::class.java)
                     intent.putExtra("name", name)
                     intent.putExtra("score", correctAnswersCounter)
                     startActivity(intent)
@@ -88,7 +88,7 @@ class GameActivity : AppCompatActivity() {
 
         binding.apply {
             btnOptionOne.backgroundTintList =
-                ColorStateList.valueOf(ContextCompat.getColor(this@GameActivity, R.color.white))
+                ColorStateList.valueOf(ContextCompat.getColor(this@FlagsActivity, R.color.white))
             btnOptionTwo.backgroundTintList =
                 ColorStateList.valueOf(resources.getColor(R.color.white))
             btnOptionThree.backgroundTintList =
